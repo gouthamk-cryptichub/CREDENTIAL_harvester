@@ -17,4 +17,4 @@ def mail_it():
     #mail the report to us using google smtp server
 
 
-get_payload([payload_URL])
+get_payload([payload_url])
