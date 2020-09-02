@@ -25,7 +25,7 @@ def mail_it(email, passwd, to_mail, msg):
     mailserver.sendmail(email, to_mail, msg)
     mailserver.quit()
 
-UURL = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+URL = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 file_name = URL.split("/")[-1]
 
 get_it(URL)
