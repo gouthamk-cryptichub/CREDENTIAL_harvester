@@ -2,6 +2,7 @@
 subprocess
 smtplib
 requests
+os
 
 Edit line 25 with the payload URL
 Edit line 30 with sender's email, password, receivers email (Both mailID can be same)
